@@ -1,4 +1,4 @@
-import React,{ useContext } from 'react';
+import React,{ useContext, useEffect, useState } from 'react';
 import Context from '../context/Context';
 import TableLine from './Subcomponents/TableLine';
 
@@ -6,8 +6,9 @@ import TableLine from './Subcomponents/TableLine';
 function PacientsTable(props) {
   const { data, filter, genderFilter } = useContext(Context);
   let filteredData = [];
+  const [asc, setAsc] = useState(0);
   
-  filter === '' ? filteredData = data : filteredData = data
+  filteredData = data
     .filter(d => d.name.first.toLowerCase().includes(filter.toLowerCase())
       || d.location.country.toLowerCase().includes(filter.toLowerCase())
       || d.name.last.toLowerCase().includes(filter.toLowerCase()))
@@ -16,22 +17,38 @@ function PacientsTable(props) {
   if(genderFilter) {
     filteredData = filteredData.filter(d => d.gender === genderFilter)
   }
-  /*filteredData = filteredData.sort((a, b) => {
-    if (a.name.first < b.name.first) {
-      return -asc;
-    }
-    if (a.name.first > b.name.first) {
-      return asc;
-    }
-    return 0;
-  })*/
+
+  if(asc !== 0) {
+    filteredData = filteredData.sort((a, b) => {
+      if (a.name.last < b.name.last) {
+        return -asc;
+      }
+      if (a.name.last > b.name.last) {
+        return asc
+      }
+      return 0;
+    })
+  }
+  const orderByName = () => {
+  if(asc === 0){
+    setAsc(1) 
+  } else if(asc == 1) {
+    setAsc(-1)
+  } else if(asc === -1) {
+    setAsc(0)
+  }
+}
     return (
       <div className="container mt-3">
         {console.log(filteredData)}
         <table className="table table-striped">
           <thead>
             <tr>
-              <th scope="col">Name </th>
+              <th scope="col">
+                <button className="name-order-btn" onClick={orderByName}>
+                  Name
+                </button>
+              </th>
               <th scope="col">Country</th>
               <th scope="col">Gender</th>
               <th scope="col">Birth</th>
@@ -42,7 +59,7 @@ function PacientsTable(props) {
             {filteredData.map((u) => 
               <TableLine
                 key={`${u.name.first} ${u.name.last}`}
-                name={`${u.name.first} ${u.name.last}` }
+                name={`${u.name.last}, ${u.name.first}` }
                 country={`${u.location.country}`}
                 gender={u.gender}
                 birth={u.dob.date.substring(0,10)}

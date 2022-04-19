@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css'; 
+import '../styles/globals.css'
 import Provider from '../context/Provider';
 
 
