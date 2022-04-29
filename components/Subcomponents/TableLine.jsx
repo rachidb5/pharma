@@ -11,7 +11,7 @@ function TableLine(props) {
         <td>{birth}</td>
         <td>
           <button className='btn btn-primary'>
-            <Link href={`/?userId=${id}`} as={`/user/${id}`}>
+            <Link href={`/userId=${id}`} as={`/user/${id}`}>
               View
             </Link>
           </button>
