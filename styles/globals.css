@@ -23,3 +23,7 @@ a {
 	cursor: pointer;
 	outline: inherit;
 }
+
+.rotation{
+  transform: rotate(90deg);
+}

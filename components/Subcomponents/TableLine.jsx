@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link'
 
 function TableLine(props) {
     const { name, gender, birth, country, id } = props;
@@ -10,7 +11,9 @@ function TableLine(props) {
         <td>{birth}</td>
         <td>
           <button className='btn btn-primary'>
-            View
+            <Link href={`/?userId=${id}`} as={`/user/${id}`}>
+              View
+            </Link>
           </button>
         </td>
       </tr>

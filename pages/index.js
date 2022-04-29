@@ -4,8 +4,13 @@ import Filter from '../components/Filter'
 import PacientsTable from '../components/PacientsTable'
 import styles from '../styles/Home.module.css'
 import LoadMore from '../components/LoadMore'
+import { useRouter } from 'next/router'
+import Modal from 'react-modal'
+
+Modal.setAppElement('#__next')
 
 export default function Home() {
+  const router = useRouter()
   return (
     <div className="overflow-hidden">
       <Head>
@@ -15,6 +20,16 @@ export default function Home() {
       </Head>
 
       <main>
+      <Modal
+        isOpen={!!router.query.userId}
+        onRequestClose={() => router.push('/')}
+        contentLabel="User modal"
+      >
+        <div>
+          this is my id: {router.query.userId}
+        </div>
+
+      </Modal>
         <Header />
         <Filter />
         <PacientsTable />

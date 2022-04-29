@@ -1,6 +1,7 @@
 import React,{ useContext, useEffect, useState } from 'react';
 import Context from '../context/Context';
 import TableLine from './Subcomponents/TableLine';
+import { VscArrowSwap } from 'react-icons/vsc'
 
 
 function PacientsTable(props) {
@@ -46,7 +47,9 @@ function PacientsTable(props) {
             <tr>
               <th scope="col">
                 <button className="name-order-btn" onClick={orderByName}>
-                  Name
+                  <div className="d-flex flex-row">
+                  Name<div className="rotation"><VscArrowSwap /></div>
+                  </div>
                 </button>
               </th>
               <th scope="col">Country</th>
