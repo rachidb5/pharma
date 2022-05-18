@@ -13,7 +13,6 @@ function Provider({ children }) {
         async function fetchData() {
           await axios.get(endpoint).then(function (response) {
             setData(response.data.results)
-            console.log(response);
           })
           .catch(function (error) {
             // handle error

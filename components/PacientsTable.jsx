@@ -66,7 +66,7 @@ function PacientsTable(props) {
                 country={`${u.location.country}`}
                 gender={u.gender}
                 birth={u.dob.date.substring(0,10)}
-                id={u.id.value}
+                id={u.login.uuid}
               />
             )}
           </tbody>

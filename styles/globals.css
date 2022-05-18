@@ -27,3 +27,7 @@ a {
 .rotation{
   transform: rotate(90deg);
 }
+
+.user-img{
+  border-radius: 100%;
+}

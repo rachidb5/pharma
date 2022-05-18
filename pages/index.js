@@ -6,6 +6,7 @@ import styles from '../styles/Home.module.css'
 import LoadMore from '../components/LoadMore'
 import { useRouter } from 'next/router'
 import Modal from 'react-modal'
+import User from '../components/User'
 
 Modal.setAppElement('#__next')
 
@@ -20,16 +21,17 @@ export default function Home() {
       </Head>
 
       <main>
-      <Modal
+     { /*<!--Modal
         isOpen={!!router.query.userId}
         onRequestClose={() => router.push('/')}
         contentLabel="User modal"
       >
         <div>
+          <User userId={router.query.userId} />
           this is my id: {router.query.userId}
         </div>
 
-      </Modal>
+     </Modal>*/}
         <Header />
         <Filter />
         <PacientsTable />
